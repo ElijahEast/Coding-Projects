@@ -1,11 +1,13 @@
 import streamlit as st
 import random
+import os
 
 # Title for the app
 st.title("Random Number Generator")
 
 # Description
 st.write("Generate a random number within your chosen range!")
+st.write("Current working directory:", os.getcwd())
 
 # Input fields for the range
 min_value = st.number_input("Enter the minimum value", value=0, step=1)
