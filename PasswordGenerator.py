@@ -23,16 +23,18 @@ if st.button("Generate Password"):
 
 # Add a button to copy the password to the clipboard
 if st.session_state.password:  # Only show the button if a password is generated
-    copy_clicked = st.button("Copy Password")
-
-    if copy_clicked:
-        # Display the success message after clicking the button
-        st.markdown(
-            f"""
-            <script>
-            navigator.clipboard.writeText('{st.session_state.password}');
-            </script>
-            """,
-            unsafe_allow_html=True,
-        )
-        st.success("Password copied to clipboard!")
+    # Add an HTML-based copy button
+    copy_code = f"""
+        <input type="text" value="{st.session_state.password}" id="passwordField" readonly>
+        <button onclick="copyToClipboard()" style="margin-left: 10px;">Copy Password</button>
+        <script>
+        function copyToClipboard() {{
+            var copyText = document.getElementById("passwordField");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            navigator.clipboard.writeText(copyText.value);
+            alert("Password copied to clipboard!");
+        }}
+        </script>
+    """
+    st.markdown(copy_code, unsafe_allow_html=True)
