@@ -6,7 +6,6 @@ characters = ""
 
 # Streamlit app layout
 st.title("Random Password Generator")
-st.write("How many characters do you want in your password?")
 
 letters = st.checkbox("Allow letters", value = True)
 numbers = st.checkbox("Allow numbers", value = True)
@@ -17,6 +16,8 @@ if (numbers):
     characters += string.digits
 if (punct):
     characters += string.punctuation
+
+st.write("How many characters do you want in your password?")
 
 # Input for the number of characters in the password
 num = st.number_input("Enter the number of characters", min_value=1, max_value=16, value=12, step=1)
