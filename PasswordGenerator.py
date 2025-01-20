@@ -16,6 +16,8 @@ if (numbers):
     characters += string.digits
 if (punct):
     characters += string.punctuation
+if (letters == False and numbers == False and punct == False):
+    st.error("Must have at least one checkbox selected.")
 
 st.write("How many characters do you want in your password?")
 
