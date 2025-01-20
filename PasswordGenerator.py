@@ -16,8 +16,6 @@ if (numbers):
     characters += string.digits
 if (punct):
     characters += string.punctuation
-if (letters == False and numbers == False and punct == False):
-    st.error("Must have at least one checkbox selected.")
 
 st.write("How many characters do you want in your password?")
 
@@ -30,5 +28,8 @@ if "password" not in st.session_state:
 
 # Generate password on button click
 if st.button("Generate Password"):
-    st.session_state.password = "".join(random.choice(characters) for _ in range(num))
-    st.write(f"Your password is: `{st.session_state.password}`")
+    if (letters == False and numbers == False and punct == False):
+        st.error("Must have at least one checkbox selected.")
+    else:
+        st.session_state.password = "".join(random.choice(characters) for _ in range(num))
+        st.write(f"Your password is: `{st.session_state.password}`")
