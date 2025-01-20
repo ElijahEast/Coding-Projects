@@ -21,13 +21,18 @@ if st.button("Generate Password"):
     st.session_state.password = "".join(random.choice(characters) for _ in range(num))
     st.write(f"Your password is: `{st.session_state.password}`")
 
-# Add a button to copy the password
+# Add a button to copy the password to the clipboard
 if st.session_state.password:  # Only show the button if a password is generated
-    copy_code = f"""
-        <button onclick="navigator.clipboard.writeText('{st.session_state.password}')"
-                style="padding: 10px; font-size: 16px; cursor: pointer;">
-            Copy Password
-        </button>
-    """
-    st.markdown(copy_code, unsafe_allow_html=True)
-    st.success("Password copied to clipboard using the Copy button!")
+    copy_clicked = st.button("Copy Password")
+
+    if copy_clicked:
+        # Display the success message after clicking the button
+        st.markdown(
+            f"""
+            <script>
+            navigator.clipboard.writeText('{st.session_state.password}');
+            </script>
+            """,
+            unsafe_allow_html=True,
+        )
+        st.success("Password copied to clipboard!")
