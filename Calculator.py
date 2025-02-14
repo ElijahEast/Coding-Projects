@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.header("Calculator")
+st.title("Calculator")
 
 # Initialize session state variables
 if "num" not in st.session_state:
