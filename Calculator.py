@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.header("Calculator")
+
 # Initialize session state variables
 if "num" not in st.session_state:
     st.session_state.num = "0"  # Store as a string to handle decimals
