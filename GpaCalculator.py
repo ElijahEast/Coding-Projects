@@ -49,11 +49,15 @@ if st.button("Calculate Grade"):
     final_grade = grades_total/num_of_assignments
     st.text(f"Final grade: {final_grade}%")
 
-hide_st_style = """
+hide_streamlit_style = """
             <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
+                /* Hide the Streamlit header and menu */
+                header {visibility: hidden;}
+                /* Optionally, hide the footer */
+                .streamlit-footer {display: none;}
+                /* Hide your specific div class, replace class name with the one you identified */
+                .st-emotion-cache-uf99v8 {display: none;}
             </style>
             """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
