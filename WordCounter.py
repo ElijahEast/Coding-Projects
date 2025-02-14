@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.header("Word Counter (press enter to update)")
+st.title("Word Counter (press enter to update)")
 
 txt = st.text_input("Paste your text")
 
