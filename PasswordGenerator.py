@@ -32,4 +32,9 @@ if st.button("Generate Password"):
         st.error("Must have at least one checkbox selected.")
     else:
         st.session_state.password = "".join(random.choice(characters) for _ in range(num))
-        st.write(f"Your password is: `{st.session_state.password}`")
+        st.success("Password generated successfully!")
+
+# Display the password with a copy-to-clipboard button
+if st.session_state.password:
+    st.write("### Your Generated Password:")
+    st.code(st.session_state.password, language="text")  # Adds a "copy" button
