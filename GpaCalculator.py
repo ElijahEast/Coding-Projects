@@ -49,9 +49,11 @@ if st.button("Calculate Grade"):
     final_grade = grades_total/num_of_assignments
     st.text(f"Final grade: {final_grade}%")
 
-def hide_anchor_link():
-    st.markdown("""
-        <style>
-        .css-15zrgzn {display: none}
-        </style>
-        """, unsafe_allow_html=True)
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
